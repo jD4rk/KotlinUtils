@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
@@ -28,6 +29,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
 
 task sourcesJar(type: Jar) {
@@ -56,14 +58,14 @@ version = '0.1.1'
 install {
     repositories.mavenInstaller {
         pom.project {
-            name 'Naughty or Nice'
-            description 'A library for finding out whether someone is on the naughty list or the nice list'
-            url 'https://github.com/northpolecoder/elf'
-            inceptionYear '2016'
+            name 'Kotlin Utils'
+            description 'A collection on classes to speed-up Android develop in kotlin'
+            url 'https://github.com/jD4rk/KotlinUtils'
+            inceptionYear '2017'
 
             packaging 'aar'
-            groupId 'northpole.nick.android'
-            artifactId 'naughtyornice'
+            groupId 'it.jdark.android'
+            artifactId 'kotlinutils'
             version '0.1.1'
 
             licenses {
@@ -73,14 +75,14 @@ install {
                 }
             }
             scm {
-                connection 'https://github.com/northpolecoder/elf.git'
-                url 'https://github.com/northpolecoder/elf'
+                connection 'https://github.com/jD4rk/KotlinUtils.git'
+                url 'https://github.com/jD4rk/KotlinUtils'
 
             }
             developers {
                 developer {
-                    id = 'northpolecoder'
-                    name 'Nick'
+                    id = 'kotlinutils'
+                    name 'jD4rk'
                 }
             }
         }
@@ -96,16 +98,20 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = 'android'
-        name = 'naughtyornice'
+        name = 'kotlin-utils'
         userOrg = 'northpolecoder'
         licenses = ['MIT']
-        vcsUrl = 'https://github.com/guardian/piper.git'
+        vcsUrl = 'https://github.com/jD4rk/KotlinUtils'
         publish = true
         version {
             name = '0.1.1'
-            desc = 'Naughty or Nice 0.1.1'
+            desc = 'fill up later'
             released = new Date()
             vcsTag = 'v0.1.1'
         }
     }
+}
+
+repositories {
+    mavenCentral()
 }
